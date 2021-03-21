@@ -13,35 +13,44 @@ class _ContadorPageState extends State<ContadorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('App 001'),
-        centerTitle: true,
-        elevation: 1.8,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Numero de Clic',
-              //style: TextStyle(fontSize: 30),
-              style: _estiloTexto,
-            ),
-            Text(
-              '$_conteo',
-              style: _estiloText2,
-            ),
-          ],
+        appBar: AppBar(
+          title: Text('App 001'),
+          centerTitle: true,
+          elevation: 1.8,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {
-            setState(() {
-              _conteo++;
-            });
-            //print('Hola mundo');
-          }),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Numero de Clic',
+                //style: TextStyle(fontSize: 30),
+                style: _estiloTexto,
+              ),
+              Text(
+                '$_conteo',
+                style: _estiloText2,
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: _crearBotones());
+  }
+
+  Widget _crearBotones() {
+    return Row(
+      //No son iguales en filas y columnas
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        SizedBox(
+          width: 30.0,
+        ),
+        FloatingActionButton(child: Icon(Icons.exposure_zero), onPressed: null),
+        Expanded(child: SizedBox(width: 5.0)),
+        FloatingActionButton(child: Icon(Icons.remove), onPressed: null),
+        Expanded(child: SizedBox(width: 5.0)),
+        FloatingActionButton(child: Icon(Icons.add), onPressed: null),
+      ],
     );
   }
 }
